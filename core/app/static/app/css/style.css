@@ -1,0 +1,587 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+
+body {
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header{
+    border-bottom: 1px solid rgb(61, 60, 60);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    background-color: #000000b6;
+}
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #ffffff;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 60px;
+}
+
+
+.nav-item {
+    margin-left: 5rem;
+}
+
+.nav-link{
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #d3d3d3;
+    transition-property: all;
+    transition: .6s
+}
+
+.nav-link:hover{
+    color: aquamarine;
+    transition:.8s;
+    font-size: 1.9rem;
+  
+
+}
+.nav-link::backdrop {
+    color: aquamarine;
+}
+
+
+
+.nav-logo {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-left: 30px;
+    transition-property: all;
+    transition: .6s
+}
+.nav-logo:hover {
+    font-size: 2.6rem;
+    transition: .8s;
+   
+
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #000000;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+}
+
+
+
+
+.container-search{
+    height: 50px;
+    position: relative;
+    padding-right: 237px;
+  
+
+  
+}
+
+.input-search{
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    font-size: 18px;
+    background-color: rgba(127, 255, 212, 0.315);
+    transition: width .3s ease-in;
+    border-radius: 50px ;
+    color: #ffffff;
+    width: 250px;
+}
+
+.input-search:focus, 
+.input-search:hover{
+  outline: none;
+  width: 250px;
+
+}
+
+.btn{
+    position: absolute;
+    border: 0;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    font-size: 18px;
+    background-color: aquamarine;
+    cursor: pointer;
+    transition: transform .3s ease-in;
+    border-radius: 50%;
+    margin-left: 200px;
+    transition-property: all;
+    transition: .2s
+
+}
+
+.btn:hover {
+    position: absolute;
+    border: 0;
+    top: 0;
+    left: 0;
+    width: 56px;
+    height: 56px;
+    border: 0;
+    font-size: 22px;
+    background-color: aquamarine;
+    cursor: pointer;
+    transition: transform .3s ease-in;
+    border-radius: 50%;
+    margin-left: 200px;
+    transition: .5s;
+
+}
+
+
+.carousel {
+    max-width: 100%; /* Максимальная ширина карусели */
+    overflow: hidden; /* Обрезаем содержимое, выходящее за границы */
+    margin: 0 auto; /* Центрируем по горизонтали */
+    position: relative;
+    height: 768;
+  
+  
+  
+ 
+   
+    
+  }
+ 
+  @media screen and (max-width: 768px) {
+    .carousel {
+        margin-top: 300px;
+    }
+   
+  }
+  @media screen and (max-width:1892px) {
+    .carousel {
+        height:500 ;
+    }
+  }
+
+  @media screen and (max-width:1200px) {
+    .carousel {
+        height:300 ;
+    }
+  }
+
+  @media screen and (max-width:768px) {
+    .carousel {
+        height:300 ;
+    }
+  }
+
+
+
+
+ 
+
+  
+  .carousel-inner {
+    display: flex; /* Отображаем элементы в строку */
+    transition: transform 0.5s ease; /* Плавный переход */
+  }
+  
+  .carousel-item {
+    position: relative;
+    flex: 0 0 100%; /* Каждый элемент занимает всю доступную ширину */
+    max-width: 100%;
+    
+   /* Максимальная ширина элемента */
+  }
+
+
+  .carousel-item .poster {
+    width: 100%; /* Изображение будет занимать всю доступную ширину родительского элемента */
+     /* Автоматически рассчитывать высоту, чтобы сохранить пропорции изображения */
+   object-fit: cover;
+   height: 50%;
+   transition: .6s;
+   transition-property: all;
+ 
+  }
+  .carousel-item .poster:hover {
+    filter: blur(3px);
+
+  }
+ 
+
+  .carousel-item .poster-logo-1 {
+    width: 31%;
+    transform: translateY(-334%) translateX(119%);
+    
+    transition: .6s;
+  }
+ 
+  .carousel-item .poster-logo-1:hover {
+    width: 30%;
+
+
+  }
+  .carousel-item .poster-logo-2 {
+    width: 62%;
+    transform: translateY(-406%) translateX(35%);
+    
+    transition: .6s;
+  }
+ 
+  .carousel-item .poster-logo-2:hover {
+    width: 61%;
+   
+
+  }
+
+  .carousel-item .poster-logo-3 {
+    width: 71%;
+    transform: translateY(-222%) translateX(45%);
+    
+    transition: .6s;
+  }
+ 
+  .carousel-item .poster-logo-3:hover {
+    width: 70%;
+
+
+  }
+
+  .carousel-controls {
+    position: absolute; /* Позиционируем абсолютно */
+    top: 50%; /* Отступ от верхнего края */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    width: 100%; /* Ширина равна ширине карусели */
+    display: flex; /* Отображаем элементы в строку */
+    justify-content: space-between; /* Равномерно распределяем элементы по ширине контейнера */
+    padding: 0 10px; /* Добавляем небольшие отступы */
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.6s;
+  }
+
+  .carousel-control:hover {
+    background-color: aquamarine;
+    color: black;
+  }
+
+  .prev {
+    position: absolute;
+    left: 10px; /* Отступ от левого края */
+    top: 50%;
+    
+    transform: translateY(-50%);
+  }
+
+  .next {
+    position: absolute;
+    right: 10px; /* Отступ от правого края */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+
+  
+
+  /* Медиа-запросы для адаптивности */
+  @media screen and (max-width: 768px) {
+    .carousel-item {
+      flex: 0 0 100%; /* На маленьких экранах показываем две картинки в строке */
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .carousel-item {
+      flex: 0 0 100%; /* На очень маленьких экранах показываем по одной картинке в строке */
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .wrapper {
+    width: 100%;
+    margin: auto;
+    display: flex;
+}
+
+.wrapper .sidebar .menu-2 li a {
+    color: #CCC;
+    text-decoration: none;
+    display: block;
+    padding: 2.5px 10px;
+}
+
+.wrapper .sidebar .menu-2 li a:hover {
+    color: aquamarine;
+    background: rgba(0, 0, 0, .3);
+}
+
+.wrapper .sidebar .menu li a {
+    color: #CCC;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+}
+
+.wrapper .sidebar .menu li a span{
+    float: right;
+    font-size: 9pt;
+    color: gray;
+}
+
+.wrapper .sidebar .menu.center a div{
+    margin-left: auto;
+    margin-right: 2.5em;
+    height: 92px;
+    width: 115px;
+}
+
+.wrapper .sidebar .menu li a:hover {
+    color: aquamarine;
+    background: rgba(0, 0, 0, .3);
+}
+.wrapper .sidebar .menu li a:hover span{
+    color: white;
+}
+
+.wrapper .sidebar li.active a{
+    color: aquamarine;
+    background: rgba(0, 0, 0, .3);
+}
+
+.wrapper .seperator {
+    border-top: 1px solid #111111;
+    border-bottom: 1px solid #353535;
+    margin: 10px;
+    position: relative;
+}
+
+.wrapper .seperator .title {
+    font-family: sans-serif;
+    position: absolute;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    right: 10px;
+    left: 10px;
+    top: -4px;
+    margin: auto;
+    text-align: center;
+    width: 90px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 11pt;
+    background: aquamarine;
+    border-radius: 20px;
+}
+
+.wrapper .sidebar {
+    background: #181717;
+    width: 178px;
+    position: fixed;
+    height: 100%;
+    margin-top: 0px;
+}
+
+.wrapper .main {
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 318px;
+  
+    margin-top: 32px;
+  
+
+}
+
+.main .content .gallery {
+    font-size: 0px;
+    margin-top: 5px;
+}
+
+.main .content .gallery .item {
+    cursor: pointer;
+    background-size: 100% 100%;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWcWg0E8pSjBNi0TtiZsqu8uD2PAr_K11DA&s');
+    display: inline-block;
+    height: 329px;
+    width: 222px;
+    flex-grow: 1;
+    font-size: 10pt;
+    margin: 2.5px;
+    color: #000;
+    position: relative;
+    border-radius: 10px;
+   
+}
+
+.main .content .gallery .item .description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, .85);
+    color: white;
+    overflow: hidden;
+    transition: all .3s;
+}
+.main .content .gallery .item:hover .description {
+    height: 100px;
+    padding: 10px;
+
+}
+
+.main .content .gallery .item .description h2 {
+    color: aquamarine;
+    font-weight: bold;
+}
+
+
+
+.menu-2 a {
+    font-size: 20px;
+}
+.menu a {
+    font-size: 20px;
+}
+.item {
+    margin: 200px;
+}
+
+
+
+.pagination {
+    margin-top: 60px;
+    text-align: center;
+
+}
+
+.pagination-link {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 3px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: .2s;
+    font-size: 18px;
+    border-radius: 40%;
+}
+
+.pagination-link:hover {
+    background-color: rgb(255, 255, 255);
+    color: #000;
+}
+
+.current {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 3px;
+    border: 1px solid #000000;
+    border-radius: 40%;
+    background-color: aquamarine;
+    color: #000000;
+    font-size: 23px;
+}
+
+.current:hover {
+    background-color: rgb(74, 163, 133);
+}

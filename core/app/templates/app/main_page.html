@@ -1,0 +1,50 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Main page{% endblock title %}
+
+{% block content %}
+
+
+<div class="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <a href="#">
+
+            <img class="poster" src="{% static 'app/img/blade-runner.jpg' %}" alt="">
+            <img class="poster-logo-1" src="https://seeklogo.com/images/B/blade-runner-logo-86666C6A07-seeklogo.com.png" alt="">
+        </a>
+       
+
+
+       
+       </div>
+    <div class="carousel-item">
+      <a href="#">
+        <img class="poster" src="{% static 'app/img/dune.jpeg' %}" alt="">
+        <img class="poster-logo-2" src="https://help.redbubble.com/hc/article_attachments/360061197632/DuneSG_Logo_Vector_B_W.png" alt="">
+
+      </a>
+    </div>
+    <div class="carousel-item">
+      <a href="#">
+        <img class="poster" src="{% static 'app/img/interstellar.jpg' %}" alt="">
+        <img class="poster-logo-3" id="3" src="https://image.tmdb.org/t/p/original/e81YnyUwNs9YO8ljpPMMjrzHsgM.png" alt="">
+
+      </a>
+
+    
+    </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-control prev">&lt;</button>
+      <button class="carousel-control next">&gt;</button>
+    </div>
+</div>
+
+
+<footer style="margin-top: 25px;">
+  <p style="color: aliceblue;text-align: center;font-size: 15px;">ViewsApp. &copy; 2024</p>
+</footer>
+ 
+  {% endblock content %}
