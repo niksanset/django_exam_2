@@ -1,0 +1,145 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Movies{% endblock title %}
+
+{% block search %}
+<div class="container-search">
+                       
+    <form method="GET" action="{%url 'search_movie_results'%}">
+        {% csrf_token %}
+        <input type="text" class="input-search" name="q" placeholder='Search..'>
+      <button class='btn' type="submit">
+
+    </form>
+    <img src="https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-21.png" alt="" style="width: 43%;">
+
+</button>
+</div>
+</form>
+
+
+
+{% endblock search %}
+
+
+
+
+
+
+{% block content %}
+
+
+<div class="wrapper">
+    <div class="sidebar">
+        
+   
+        
+        <div class='seperator'>
+            <div class='title'>Sort</div>
+        </div>
+        <ul class="menu-2">
+            <li class="active"><a href="#">All</a></li>
+            <li><a href="#">Latest</a></li>
+            <li><a href="#">Top</a></li>
+            <li><a href="#">Rating</a></li>
+        </ul>
+
+        <div class='seperator'>
+            <div class='title'>Category </div>
+        </div>
+
+        <ul class="menu">
+            <li><a href="{% url "series_list" %}">All<span>205</span></a></li>
+            <li><a href="{% url 'series_category' 'Action' %}">Action<span>15</span></a></li>
+            <li><a href="{% url "series_category" 'Animation' %}">Animation<span>3</span></a></li>
+            <li><a href="{% url "series_category" 'Anime' %}">Anime<span>13</span></a></li>
+            <li><a href="{% url "series_category" 'Adventure'  %}">Adventure<span>11</span></a></li>
+            <li><a href="{% url "series_category" 'Comedy' %}">Comedy<span>1</span></a></li>
+            <li><a href="{% url "series_category" 'Crime' %}">Crime<span>1</span></a></li>
+            <li><a href="{% url "series_category" 'Documentary' %}">Documentary<span>0</span></a></li>
+            <li><a href="{% url "series_category" 'Drama' %}">Drama<span>7</span></a></li>
+            <li><a href="{% url "series_category" 'Fantasy' %}">Fantasy<span>32</span></a></li>
+            <li><a href="{% url "series_category" 'History' %}">History<span>65</span></a></li>
+            <li><a href="{% url "series_category" 'Horror' %}">Horror<span>78</span></a></li>
+            <li><a href="{% url "series_category" 'Musical' %}">Musical<span>12</span></a></li>
+            <li><a href="{% url "series_category" 'Mystery' %}">Mystery<span>3</span></a></li>
+            <li><a href="{% url "series_category" 'Sci-Fi' %}">Sci-Fi<span>7</span></a></li>
+            <li><a href="{% url "series_category" 'Sport' %}">Sport<span>87</span></a></li>
+            <li><a href="{% url "series_category" 'Thriller' %}">Thriller<span>45</span></a></li>
+            <li><a href="{% url "series_category" 'War' %}">War<span>47</span></a></li>
+            <li><a href="{% url "series_category" 'Western' %}">Western<span>19</span></a></li>
+        </ul>
+    </div>
+    <!-- MAIN -->
+    <div class="main">
+        {% for series in series_list  %}
+        <div class="content">
+
+
+<div class="gallery">
+  
+    
+    <a href="{% url "series_detail" pk=series.pk %}">
+
+
+        <div class="item">
+            <img src="{{ series.image_medium }}" alt="" style="width: 222px;height: 329px;border-radius: 10px;">
+            <div class="description">
+                <h2>{{ series.name }}</h2>
+                <p>{{ series.premiered }}</p>
+            </div>
+    </a>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+               
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page=1" class="pagination-link">&laquo;</a>
+        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">&lsaquo;</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number %}
+            <span class="current">{{ num }}</span>
+        {% elif num > page_obj.number|add:'-5' and num < page_obj.number|add:'5' %}
+            <a href="?page={{ num }}" class="pagination-link">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="pagination-link"> &rsaquo;</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link"> &raquo;</a>
+    {% endif %}
+</div>
+
+
+
+
+
+
+
+
+ 
+    
+
+
+{% endblock content %}

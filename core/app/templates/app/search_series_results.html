@@ -1,0 +1,92 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Search movie{% endblock title %}
+{% block search %}
+<div class="container-search">
+                       
+    <form method="GET" action="{%url 'search_series_results'%}">
+        {% csrf_token %}
+        <input type="text" class="input-search" name="q" placeholder='Search..'>
+      <button class='btn' type="submit">
+
+    </form>
+    <img src="https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-21.png" alt="" style="width: 43%;">
+
+</button>
+</div>
+</form>
+
+
+{% endblock search %}
+
+{% block content %}
+
+
+<div class="wrapper">
+    <div class="sidebar">
+        
+   
+        
+        <div class='seperator'>
+            <div class='title'>Sort</div>
+        </div>
+        <ul class="menu-2">
+            <li class="active"><a href="#">All</a></li>
+            <li><a href="#">Year</a></li>
+            <li><a href="#">Latest</a></li>
+            <li><a href="#">Top</a></li>
+            <li><a href="#">Rating</a></li>
+        </ul>
+
+        <div class='seperator'>
+            <div class='title'>Category </div>
+        </div>
+
+        <ul class="menu">
+            <li class="active"><a href="#">All<span>205</span></a></li>
+            <li><a href="#">Action<span>15</span></a></li>
+            <li><a href="#">Animation<span>3</span></a></li>
+            <li><a href="#">Anime<span>13</span></a></li>
+            <li><a href="#">Adventure<span>11</span></a></li>
+            <li><a href="#">Comedy<span>1</span></a></li>
+            <li><a href="#">Crime<span>1</span></a></li>
+            <li><a href="#">Documentary<span>0</span></a></li>
+            <li><a href="#">Drama<span>7</span></a></li>
+            <li><a href="#">Fantasy<span>32</span></a></li>
+            <li><a href="#">History<span>65</span></a></li>
+            <li><a href="#">Horror<span>78</span></a></li>
+            <li><a href="#">Musical<span>12</span></a></li>
+            <li><a href="#">Mystery<span>3</span></a></li>
+            <li><a href="#">Sci-Fi<span>7</span></a></li>
+            <li><a href="#">Sport<span>87</span></a></li>
+            <li><a href="#">Thriller<span>45</span></a></li>
+            <li><a href="#">War<span>47</span></a></li>
+            <li><a href="#">Western<span>19</span></a></li>
+        </ul>
+    </div>
+
+
+
+    <div class="main">
+        {% for result in results %}
+                <div class="content">
+                    <div class="gallery">
+                        <a href="{% url 'series_detail' pk=result.pk %}">
+                            <div class="item">
+                                <img src="{{ result.image_medium }}" alt="" style="width: 222px;height: 329px;border-radius: 10px;">
+                                <div class="description">
+                                    <h2>{{ result.name }}</h2>
+                                    <p>{{ result.premiered }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+        {% empty %}
+            <h3 style="color: aliceblue;font-size: 30px;align-items: center;">No series found</h3>
+        {% endfor %}
+    </div>
+
+    
+{% endblock content %}

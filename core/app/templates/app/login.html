@@ -1,0 +1,155 @@
+{% extends "app/base.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<div class="login">
+
+    <div id="form-container">
+        <h1 class="title">Sign in</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="label">Username</div>
+            <input style="background-color: transparent;color: #fff;" id="username" type="text" name="username" required />
+            <div class="label">Password</div>
+            <input style="background-color: transparent;color: #fff;" id="password" type="password" name='password' required/>
+            <input type="submit" class="submit" value="Sign in" />
+            <div class="label msg">◆ You don't have an account? <a href="{% url "register" %}">Sign up</a></div>
+    
+        </form>
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}
+
+{% block style %}
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        position: relative; 
+        overflow: hidden;
+       
+      
+      
+       
+      
+     ; 
+      
+    }
+
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://i.redd.it/4fxxbm4opjd31.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(3px) opacity(20%);
+        z-index: -1; 
+    }
+
+      /* --------- Form ----------- */
+      
+      #form-container{
+        margin-top: 50px;
+          position: absolute;
+        left: 50%;
+          top: 50%;
+        transform: translate(-50%,-50%);
+          width: 400px;
+          height: 500px;
+           background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px); 
+         border-radius: 20px;
+         border:1px solid rgba(255, 255, 255, 0.18);
+         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+          overflow: hidden;
+          padding: 20px;
+        
+
+      }
+      
+      /* -----  Form content  ------ */
+      .title{
+          font-weight: 100;
+          font-size: 30pt;
+          color:aliceblue;
+      }
+      .msg{
+          margin: 20px;
+          font-size: 18px;
+      }
+      input{
+       
+          border: none;
+          height: 30px;
+          width: 90%;
+          border-bottom: solid 2px #fff;
+          margin: 10px;
+          font-size: 20px;
+     
+         
+        
+      }
+ 
+      a{
+          color:aquamarine;
+          text-decoration: none;
+          font-weight: 800;
+      }
+      .label{
+          margin-top: 30px;
+          color: #fff;
+          font-size: 18px;
+      }
+      .submit{
+          margin-top: 20px;
+          color: #fff;
+          height: 40px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px); 
+         border-radius: 5px;
+         border:1px solid rgba(255, 255, 255, 0.18);
+         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+      }
+      input:focus{
+          border-bottom: 2px solid #fff;
+              outline: none;
+          font-size: 16px;
+          color: #fff;
+      }
+      .submit:hover{
+          background-color: rgb(255, 255, 255);
+          color: #000;
+      }
+      a:hover{
+          text-decoration: underline;
+      }
+
+
+
+
+
+
+
+
+</style>
+
+{% endblock style %}
+
+
+

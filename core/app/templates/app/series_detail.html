@@ -1,0 +1,286 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %} Series detail {% endblock title %}
+{% block search2 %}
+<div class="container-search">
+                       
+    <form method="GET" action="{%url 'search_series_results'%}">
+        {% csrf_token %}
+        <input type="text" class="input-search" name="q" placeholder='Search..'>
+      <button class='btn' type="submit">
+
+    </form>
+    <img src="https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-21.png" alt="" style="width: 43%;">
+
+</button>
+</div>
+</form>
+
+
+
+{% endblock search2 %}
+
+
+
+{% block content %}
+
+{% comment %} <div class="series_detail" style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;padding: 20px;">
+    <div class="series_info" style="max-width: 100%; margin-right: 100px;">
+        <img src="{{series_detail.image_original }}" alt="" style="width: 350px;height: 500px;object-fit: cover;border-radius: 20px;">
+        <h1 style="color:aquamarine;font-size: 30px;margin-top: 20px;width: 260px;">{{ series_detail.name }}</h1>
+        <p style="color:#fff;font-size: 15px;width: 260px;">{{ series_detail.premiered }},{{ series_detail.genres}},<br><br>{{ movie_detail.language }}</p>
+        <div style="width: 400px;">
+            <p style="color: #fff;margin-top:20px;font-size: 17px;">{{ series_detail.summary }}</p>
+
+      
+        </div>
+
+    </div>
+    <iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/bwNaz8MvuTo?si=mBFqvf649NRRInse&amp;start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-top: 10px;margin-left: 2px;border-radius: 20px;"></iframe>
+   
+
+
+
+
+
+</div>
+ {% endcomment %}
+
+
+
+ <div class="banner">
+    <div class="content">
+        <img src="{{series_detail.image_original}}" alt="" style="width: 200px;height: 300px;object-fit: cover;border-radius: 20px;">
+        <h2 style="margin-top: 20px;">{{ series_detail.name }}</h2>
+        <p style="font-style: Oswald;">{{series_detail.genres}}</p>
+        <p>{{ series_detail.summary }}</p>
+        <a href="#" class="play playBut" onclick="toggle();">
+            <div style="display: inline-block; width: 50px;">
+                <svg id="playBtn" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+                x="0px" y="0px" width="213.7px" height="213.7px" viewBox="0 0 213.7 213.7" enable-background="new 0 0 213.7 213.7"
+                xml:space="preserve">
+                <polygon class='triangle' id="XMLID_18_" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+            73.5,62.5 148.5,105.8 73.5,149.1 "/>
+                <circle class='circle' id="XMLID_17_" fill="none"  stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="106.8" cy="106.8" r="103.3"/>
+                </svg>
+            </div>
+            Watch 
+        </a>
+    </div>
+</div>
+<div class="trailer">
+    <div class="iframe-wrap">
+        <div class="iframe-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/bwNaz8MvuTo?si=ff-86SuyiszKlXBy&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <img src="https://static.thenounproject.com/png/953232-200.png" class="close" onclick="toggle();">
+</div>
+
+
+
+
+{% endblock content %}
+
+
+
+
+{% block style %}
+<style>
+    .banner {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0 100px;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+      
+    }
+
+    .banner::before {
+        content: ""; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('{{series_detail.image_original }}');
+        background-size: cover;
+        filter: blur(30px) opacity(20%); 
+        z-index: -1; 
+    }
+  
+    .banner .content {
+        max-width: 550px;
+    }
+    .banner .content h2 {
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 6em;
+        letter-spacing: 0.1em;
+        color: #fff;
+    }
+    .banner .content p {
+        font-size: 1.7em;
+        font-weight: 300;
+        letter-spacing: 0.02em;
+        line-height: 1.5em;
+        color: #fff;
+        margin: 15px 0 35px;
+    }
+    .play {
+        position: relative;
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+        text-decoration: none;
+        letter-spacing: 2px;
+        font-size: 1.2em;
+    }
+    .trailer {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 10000;
+        background: rgba(0,0,0,0.95);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+    }
+    .trailer.active {
+        visibility: visible;
+        opacity: 1;
+    }
+    .iframe-wrap {
+        width: 100%;
+        max-width: 900px;
+    }
+    .iframe-container {
+        overflow: hidden;
+        padding-top: 56.25%;
+        position: relative;
+    }  
+    .iframe-container iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    .trailer .close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        cursor: pointer;
+        filter: invert(1);
+        max-width: 32px; 
+    }
+    @media (max-width: 991px) {
+        header {
+            padding: 20px 50px;
+        }
+        header .logo {
+            max-width: 130px;
+        }
+        header .toggle {
+            max-width: 40px;
+        }
+        .banner {
+            padding: 100px 50px;
+        }
+        .banner .content h2 {
+            font-weight: 400;
+            font-size: 2em;
+            letter-spacing: 0.05em;
+        }
+        .banner .content p {
+            font-size: 1em;
+        }
+        .slide {
+            position: relative;
+            bottom: initial;
+            left: 0;
+            width: 250px;
+            height: 150px;
+            margin: 20px 0;
+        }
+        .trailer video {
+            width: 90%;
+        }
+    
+    }
+    svg#playBtn {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+    .circle {
+        stroke: aquamarine;
+        -webkit-transition: all 0.5s ease-in-out;
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+      
+    .playBut {
+        display: inline-block;
+        -webkit-transition: all 0.5s ease;
+    }
+    .playBut:hover {
+        color: aquamarine; 
+    }
+    .playBut .triangle {
+        -webkit-transition: all 0.7s ease-in-out;
+        stroke-dasharray: 240;
+        stroke-dashoffset: 480;
+        stroke: #fff;
+        transform: translateY(0);
+    }
+    .playBut:hover .triangle {
+        stroke-dashoffset: 0;
+        opacity: 1;
+        stroke: aquamarine;
+    }
+    .playBut:hover .circle {
+        stroke-dasharray: 650;
+        stroke-dashoffset: 650;
+        opacity: 0.3;
+    }
+      
+
+
+</style>
+
+{% endblock style %}
+
+{% block js %}
+<script>
+    function toggle(){
+        var trailer = document.querySelector('.trailer');
+        trailer.classList.toggle('active');
+        if(!trailer.classList.contains('active')) {
+            var iframe = document.querySelector('iframe');
+            var iframeSrc = iframe.src;
+            iframe.src = iframeSrc;
+        }
+    }
+
+
+
+
+</script>
+
+{% endblock js %}
